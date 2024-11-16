@@ -27,6 +27,7 @@ C++ 코드: 위치 데이터를 읽고 서버로 HTTP 요청을 보내는 기능
 ![스크린샷 2024-11-16 110338](https://github.com/user-attachments/assets/660dae0b-effe-4e30-b08a-8a028349fc00)
 ![스크린샷 2024-11-16 110655](https://github.com/user-attachments/assets/fd9cf43b-8586-4bb5-a40e-c4e6d0a00e77)
 ![스크린샷 2024-11-16 110705](https://github.com/user-attachments/assets/61ac481e-5967-4d38-82f0-f017b627090b)
+
 새로운 사용자는 회원가입 후 로그인할 수 있으며, 로그인 후 대여 기능을 사용할 수 있습니다.
 시범 운영 단계에서의 이화그린컵 도난 방지를 위해 사용자의 정보와 대여, 반환 정보는 저장됩니다.
 
@@ -36,6 +37,7 @@ C++ 코드: 위치 데이터를 읽고 서버로 HTTP 요청을 보내는 기능
 ![스크린샷 2024-11-16 110504](https://github.com/user-attachments/assets/c2c5ec2a-bb55-4343-a44f-ba4aa9427ca3)
 ![스크린샷 2024-11-16 110514](https://github.com/user-attachments/assets/91fe23df-1d04-479b-b2dc-b2232dab2eb3)
 ![스크린샷 2024-11-16 110532](https://github.com/user-attachments/assets/456635aa-6004-45de-b63b-4c64a0472cc2)
+
 대여: 사용자가 대여 코드를 입력하면 대여가 완료되며, 대여 시작 시간이 기록됩니다.
 반환: 사용자가 반환 코드를 입력하면 반환이 완료되고 스탬프가 추가됩니다. 스탬프가 5개 이상 쌓이면 리워드 알림 창이 표시됩니다.
 
