@@ -1,0 +1,23 @@
+# 가상 환경
+venv*/
+.venv/
+
+# IDE 설정 파일
+.vscode/
+.idea/
+
+# Python 컴파일 파일
+*.pyc
+__pycache__/
+
+# 환경 설정 파일
+.env
+env.json
+
+# OS 별 파일
+.DS_Store
+Thumbs.db
+
+# 기타
+*.log
+*.sqlite3

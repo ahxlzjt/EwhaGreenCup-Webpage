@@ -1,0 +1,106 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+</head>
+
+{% block content %}
+<style>
+    .stamps-container {
+        border: 1px solid #ccc; /* 테두리 색상 */
+        border-radius: 8px;     /* 모서리 둥글게 */
+        padding: 20px;          /* 안쪽 여백 */
+        background-color: #ffffff; /* 배경 색상 */
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+        margin-top: 10px;       /* 위쪽 여백 늘리기 */
+        display: flex;           /* Flexbox 사용 */
+        flex-direction: column;  /* 세로 방향으로 정렬 */
+        align-items: center;     /* 중앙 정렬 */
+        margin-bottom: 30px; /* 스탬프와 다음 요소 간의 간격 조정 */
+    }
+
+    .stamps {
+        display: flex;           /* Flexbox 사용 */
+        margin-top: 5px;       /* 제목과 스탬프 간의 여백 */
+    }
+
+    .stamp {
+        margin: 0 5px; /* 스탬프 간의 간격 조정 */
+        width: 50px;    /* 스탬프의 폭 조정 */
+        height: auto;   /* 높이는 자동 */
+    }
+
+    .stamps-title {
+        font-size: 18px;  /* 제목 크기 조정 */
+        font-weight: bold; /* 제목 굵게 */
+        margin-bottom: 10px; /* 제목과 스탬프 간의 간격 */
+    }
+
+    .card {
+        color: #ffffff; /* 기본 텍스트 색상 */
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #C2D6C2;
+        border: none;
+    }
+    .card:hover {
+        background-color: #C4D5B3;
+        color: #ffffff; /* 호버 시 텍스트 색상 */
+    }
+    .card-body h5 {
+        color: inherit; /* 부모 요소의 색상을 따름 */
+    }
+    .card a {
+        color: inherit; /* 부모 요소의 색상을 따름 */
+        text-decoration: none; /* 밑줄 제거 */
+    }
+    .card a:hover {
+        color: inherit; /* 호버 시에도 부모 색상을 유지 */
+    }
+</style>
+
+<!-- 스탬프 표시 부분 -->
+<div class="stamps-container">
+    <div class="stamps-title"><h5>{{ request.user.nickname }}님의 스탬프</h5></div> <!-- 수평 제목 -->
+    <div class="stamps">
+        {% for i in "12345" %}
+            <div class="stamp">
+                {% if forloop.counter <= user.stamps %}
+                    <img src="{% static 'images/스탬프.png' %}" alt="Stamp" style="width: 70px; height: auto;">
+                {% else %}
+                    <img src="{% static 'images/빈스탬프.png' %}" alt="Empty Stamp" style="width: 70px; height: auto;"> <!-- 비어있는 스탬프 이미지 -->
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 버튼 카드를 가로로 배치 -->
+<div class="row">
+    <div class="col-6 p-2">
+        <div class="card text-center">
+            <a class="text-decoration-none" href="{% url 'rentalvalue' %}">
+                <div class="card-body">
+                    <h5>대여하기</h5> 
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-6 p-2">
+        <div class="card text-center">
+            <a class="text-decoration-none" href="{% url 'position' %}">
+                <div class="card-body">
+                    <h5>수거함<br>위치 보기</h5> 
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

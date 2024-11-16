@@ -1,0 +1,36 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="text-center mt-4">
+    <img src="{% static 'images/로고.png' %}" alt="사용 방법 이미지" style="max-width: 30%; height: auto; margin-bottom: 50px;">
+</div>
+
+<div class="container-fluid">
+    <!-- 긴급 연락처 섹션 -->
+    <div class="emergency-contact-container" style="background-color: #C2D6C2; padding: 20px; border-radius: 8px; box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+        <h5 class="contact-heading" style="color: #4F7942; font-weight: bold; margin-bottom: 20px;">긴급 연락처</h5>
+        <ul class="contact-list" style="list-style: none; padding: 0; margin: 0;">
+            <li class="contact-item" style="margin-bottom: 15px;">
+                <span style="font-weight: bold; color: #4F7942;">전연주:</span> 010-4284-9929
+            </li>
+            <li class="contact-item" style="margin-bottom: 15px;">
+                <span style="font-weight: bold; color: #4F7942;">우정민:</span> 010-1111-1111
+            </li>
+            <li class="contact-item" style="margin-bottom: 15px;">
+                <span style="font-weight: bold; color: #4F7942;">김혜연:</span> 010-2222-2222
+            </li>
+            <li class="contact-item" style="margin-bottom: 15px;">
+                <span style="font-weight: bold; color: #4F7942;">김민솔:</span> 010-3333-3333
+            </li>
+            <li class="contact-item" style="margin-bottom: 15px;">
+                <span style="font-weight: bold; color: #4F7942;">김다정:</span> 010-4444-4444
+            </li>
+            <li class="contact-item">
+                <span style="font-weight: bold; color: #4F7942;">홍채연:</span> 010-5555-5555
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

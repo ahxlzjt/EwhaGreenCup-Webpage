@@ -1,0 +1,63 @@
+{% extends 'common/base1.html' %}
+
+{% block content %}
+    {% if error %}
+        <p class="text-danger">{{ error }}</p>
+    {% else %}
+        <div class="info-box mb-4">
+            <h3>렌탈 시작 시간:</h3>
+            <h3>{{ rental_time }}</h3>
+        </div>
+        <div class="info-box mb-4">
+            <h3 id="elapsed-time">경과 시간: {{ time_elapsed }}</h3>
+        </div>
+        <div class="row">
+            <div class="col-6 p-2">
+                <div class="btn-custom-primary-center">
+                    <a class="text-decoration-none" onclick="window.location.href='{% url 'returnvalue' %}'">
+                        <div class="btn btn-custom-primary">
+                            <h5>반환 코드<br>입력하기</h5> 
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 p-2">
+                <div class="card text-center">
+                    <a class="text-decoration-none" onclick="window.location.href='{% url 'position1' %}'">
+                        <div class="btn btn-custom-primary">
+                            <h5>수거함<br>위치 보기</h5> 
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <script>
+        // Python에서 전달된 렌탈 시작 시간을 JavaScript로 가져옴
+        let rentalTime = new Date("{{ rental_time|date:'Y-m-d H:i:s' }}");
+        let elapsedTimeElement = document.getElementById('elapsed-time');
+
+        function updateElapsedTime() {
+            let currentTime = new Date();
+            let timeDifference = currentTime - rentalTime;
+
+            // 경과 시간을 시, 분, 초 단위로 변환
+            let hours = Math.floor(timeDifference / (1000 * 60 * 60));
+            let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            // 경과 시간 포맷팅
+            elapsedTimeElement.textContent = `경과 시간: ${hours}시간 ${minutes}분 ${seconds}초`;
+        }
+
+        // 1초마다 경과 시간 업데이트
+        setInterval(updateElapsedTime, 1000);
+    </script>
+    <script>
+        if (performance.navigation.type === 2) {
+            // '뒤로 가기' 동작 시 페이지를 다시 로드
+            window.location.reload(true);
+        }
+    </script>
+{% endblock %}

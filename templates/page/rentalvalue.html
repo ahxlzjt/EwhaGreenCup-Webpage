@@ -1,0 +1,25 @@
+{% extends "common/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="info-box mb-4" style="padding: 20px;">
+        <!-- 대여 번호 입력 안내 텍스트 -->
+        <style="color: #4F7942;">대여 번호 네 글자를 입력해주세요.</style>
+
+        <!-- 대여 번호 입력 폼 -->
+        <form method="post"> <!-- method를 POST로 변경 -->
+            {% csrf_token %}
+            <div class="input-group mt-2">
+                <input class="form-control" type="text" name="search1_text" required>
+                <button type="submit" class="btn btn-custom-secondary">
+                    입력
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- 사용 방법 이미지 추가 -->
+    <div class="text-center mt-4">
+        <img src="{% static 'images/대여절차.png' %}" alt="사용 방법 이미지" style="max-width: 100%; height: auto; margin-top: 0px;">
+    </div>
+{% endblock %}

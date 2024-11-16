@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'SF_IceLemon';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_IceLemon.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 다른 CSS 규칙들 */
+.cute-text {
+    font-family: 'SF_IceLemon', sans-serif;
+    font-size: 22px;
+    color: black;
+    font-weight: bold;
+}
+
+/* 버튼 스타일 */
+.btn-custom-primary {
+    background-color: #9CAF88; /* 밝은 초록색 */
+    color: white;
+    border: none;
+}
+.btn-custom-primary:hover {
+    background-color: #8F9779; /* 어두운 초록색 */
+    color: white;
+}
+.btn-custom-secondary {
+    background-color: #D0F0C0; /* 연한 초록색 */
+    color: black;
+    border: none;
+}
+.btn-custom-secondary:hover {
+    background-color: #BDE5B0; /* 더 밝은 연한 초록색 */
+    color: black;
+}
+
+/* 상단 배경 및 텍스트 스타일 */
+.navbar-custom {
+    background-color: #007D60; /* Pantone 336 C (이화그린색) */
+    text-align: center;
+}
+.navbar-custom .navbar-brand {
+    color: rgb(255, 253, 241);  /* EWHA PEAR BLOSSOM 색 */
+    font-weight: bold;
+}
+.navbar-custom .navbar-brand:hover {
+    color: #C4D5B3; /* 살짝 어두운 EWHA PEAR BLOSSOM 색 */
+}
+
+/* 전체 배경색 */
+body {
+    background-color: rgb(255, 253, 241); /* EWHA PEAR BLOSSOM */
+}
+
+/* 버튼과 다른 요소 스타일 */
+.btn-custom-primary {
+    background-color: #9CAF88; /* #9CAF88 색 */
+    color: white;
+    border: none;
+}
+.btn-custom-primary:hover {
+    background-color: #8F9779; /* #8F9779 색 */
+    color: white;
+}
+
+/* 박스 스타일 */
+.info-box {
+    background-color: #ffffff; /* 흰색 배경으로 박스를 구분 */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #4F7942; /* 어두운 초록색 글씨 */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+    margin-bottom: 20px;
+}
+

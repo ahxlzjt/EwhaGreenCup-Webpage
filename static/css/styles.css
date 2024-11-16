@@ -1,0 +1,63 @@
+/* 네비게이션 바 */
+.navbar-custom {
+    background-color: #007D60; /* Pantone 336 C (이화그린색) */
+    text-align: center;
+    padding: 10px 20px;
+}
+.navbar-custom .navbar-brand {
+    color: rgb(255, 253, 241);  /* EWHA PEAR BLOSSOM 색 */
+    font-weight: bold;
+}
+.navbar-custom .navbar-brand:hover {
+    color: #C4D5B3; /* 살짝 어두운 EWHA PEAR BLOSSOM 색 */
+}
+
+/* 사이드바 스타일 */
+.sidebar-link-container {
+    background-color: #C2D6C2; /* 연한 이화그린 계열 */
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.sidebar-link {
+    color: #4F7942; /* 어두운 초록색 글씨 */
+    font-weight: bold;
+    text-decoration: none;
+}
+.sidebar-link:hover {
+    color: #2F4F2F; /* 더 어두운 초록색 */
+}
+
+/* 로그아웃 링크 스타일 */
+.logout-link{
+    color: rgb(255, 253, 241); /* EWHA PEAR BLOSSOM 색 */
+    font-weight: bold;
+    text-decoration: none;
+}
+.logout-link:hover{
+    color: #C4D5B3; /* 살짝 어두운 EWHA PEAR BLOSSOM 색 */
+}
+
+/* 박스 스타일 */
+.info-box {
+    background-color: #ffffff; /* 흰색 배경으로 박스를 구분 */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #4F7942; /* 어두운 초록색 글씨 */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+    margin-bottom: 20px;
+}
+
+/* 텍스트 스타일 */
+h1, h2 {
+    font-size: 1.5rem; /* 동일한 글자 크기 */
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.1rem; /* 동일한 글자 크기 */
+    margin-bottom: 10px;
+}
