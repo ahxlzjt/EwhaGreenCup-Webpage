@@ -7,6 +7,8 @@ from user.models import User, ReturnCode, RentalCode, ArduinoLocation
 import datetime
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 
 def home(request):
     return render(request, 'page/home.html')
@@ -116,9 +118,29 @@ def get_arduino_location(request):
         return JsonResponse({'error': 'No location data available'}, status=404)
 
 def position(request):
-    if request.method == "GET":
-        return render(request, 'page/position.html')
-    
+    latitude = request.GET.get('lat')
+    longitude = request.GET.get('lng')
+
+    if latitude and longitude:
+        try:
+            # 데이터베이스 저장
+            ArduinoLocation.objects.create(latitude=latitude, longitude=longitude)
+
+            # WebSocket 전송 (선택 사항)
+            channel_layer = get_channel_layer()
+            async_to_sync(channel_layer.group_send)(
+                "location_group",
+                {
+                    "type": "send_location",
+                    "latitude": latitude,
+                    "longitude": longitude,
+                },
+            )
+            return JsonResponse({"status": "success", "latitude": latitude, "longitude": longitude})
+        except ValueError as e:
+            return JsonResponse({"status": "failed", "message": f"Invalid data format: {e}"})
+    return JsonResponse({"status": "failed", "message": "Invalid data"})
+
 def position1(request):
     if request.method == "GET":
         return render(request, 'page/position1.html')

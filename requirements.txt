@@ -1,4 +1,9 @@
-django==3.2.4
+django==4.2
 psycopg2
 boto3
 django-storages
+channels
+channels-redis
+django-cors-headers
+django-extensions
+reque

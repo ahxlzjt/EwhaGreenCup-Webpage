@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '172.20.10.3', 'localhost']
 
 
 # Application definition
@@ -40,7 +40,21 @@ INSTALLED_APPS = [
     'board',
     'storages',
     'channels',
+    'django_extensions',
+    'corsheaders',
 ]
+
+# CORS 설정
+CORS_ALLOW_ALL_ORIGINS = True  # 개발 환경에서 모든 도메인 허용
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",  # 필요한 도메인 추가
+    "http://127.0.0.1:8080",
+    "http://172.20.10.3:8080",
+]
+
+# WebSocket 관련 허용 설정
+CORS_ORIGIN_ALLOW_ALL = True
 
 # 커스텀 user를 사용하기 때문에 AUTH_USER_MODEL 선언
 # user 앱에 User라는 클래스 사용
@@ -54,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'ewhagreencup.urls'
@@ -98,6 +113,14 @@ DATABASES = {
     }
 }
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [('127.0.0.1', 6379)],  # Redis 서버 설정
+        },
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -161,3 +184,15 @@ SECRET_KEY = env_json['SECRET_KEY']
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# HTTPS 설정
+SECURE_SSL_REDIRECT = True  # HTTPS로 강제 리다이렉트 (배포 환경에서 활성화)
+SECURE_HSTS_SECONDS = 31536000  # HTTPS Strict Transport Security 활성화 (1년)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # 서브도메인에도 HSTS 적용
+SECURE_HSTS_PRELOAD = True  # 브라우저에 HTTPS Preload 요청
+SECURE_CONTENT_TYPE_NOSNIFF = True  # MIME 타입 강제
+
+# 개발 환경에서는 False로 설정 가능
+SECURE_SSL_REDIRECT = False  # HTTPS 비활성화 (개발 환경)
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None

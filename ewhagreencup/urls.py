@@ -20,6 +20,7 @@ urlpatterns = [
     path("user/position1", position1, name="position1"),
     path("user/sidebar", sidebar, name="sidebar"),
     path("user/sidebar1", sidebar1, name="sidebar1"),
+    path("position/", position, name="position_direct"),
 ]
 
 if settings.DEBUG:  
